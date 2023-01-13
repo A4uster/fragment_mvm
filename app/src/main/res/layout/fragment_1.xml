@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Fragment1"
     android:background="#BB5DCC"
+    android:padding="20dp"
     >
 
     <!-- TODO: Update blank fragment layout -->
@@ -15,8 +16,37 @@
         android:text="Fragment 1"
         android:textSize="24sp"
         android:gravity="center"
-
+        />
+    <EditText
+        android:id="@+id/TV_dades_Per_EnviarFrg1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Dades per enviar"
+        android:layout_centerInParent="true"
+        android:background="@color/white"
+        android:padding="20dp"
 
         />
 
+    <TextView
+        android:id="@+id/TV_dades_rebudesFrg1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dades rebudes"
+        android:background="#656161"
+        android:padding="20dp"
+        android:layout_below="@+id/TV_dades_Per_EnviarFrg1"
+        android:layout_marginTop="10dp"
+        />
+
+    <Button
+        android:id="@+id/BTN_EnviarDadesFrg1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enviar dades"
+        android:layout_below="@id/TV_dades_rebudesFrg1"
+        android:layout_marginTop="10dp"
+        android:padding="20dp"
+        android:backgroundTint="#8F0101"
+        />
 </RelativeLayout>

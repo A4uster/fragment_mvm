@@ -1,6 +1,7 @@
 package com.example.fragment_mvm;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.FL_ContingutFragments, new Fragment1()).commit();
+
         //PASO 2
         mBtnCarregarFragment1 = findViewById(R.id.BTN_Fragment1);
         mBtnCarregarFragment2 = findViewById(R.id.BTN_Fragment2);
@@ -24,10 +29,10 @@ public class MainActivity extends AppCompatActivity {
         mBtnCarregarFragment1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Carregem el fragment 1
-
+                CarregarFragment(new Fragment1());
+                /*
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.FL_ContingutFragments, new Fragment1()).commit();
+                        .replace(R.id.FL_ContingutFragments, new Fragment1()).commit();*/
 
             }
 
@@ -35,10 +40,16 @@ public class MainActivity extends AppCompatActivity {
         mBtnCarregarFragment2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                CarregarFragment(new Fragment2());
+                /*
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.FL_ContingutFragments, new Fragment2()).commit();
+                        .replace(R.id.FL_ContingutFragments, new Fragment2()).commit();*/
             }
         });
+    }
+    private void CarregarFragment (Fragment Fragment){
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.FL_ContingutFragments, Fragment).commit();
     }
 
 
