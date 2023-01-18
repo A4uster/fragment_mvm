@@ -2,6 +2,7 @@ package com.example.fragment_mvm;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +17,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Inicializem la variable de tipus ModelView
+        mItemModelView = new ViewModelProvider(this).get(itemModelView.class);
+
+        //Consultem el valor de ViewModel
+        mItemModelView.getDadesLiveData().observe(this.itemObservat -> {
+            mTvDadesCompartides.setText(itemObservat);
+        });
 
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.FL_ContingutFragments, new Fragment1()).commit();
