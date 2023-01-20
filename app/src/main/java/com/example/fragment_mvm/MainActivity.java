@@ -7,10 +7,13 @@ import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     //PASO 1
     private Button mBtnCarregarFragment1, mBtnCarregarFragment2;
+    private itemModelView mItemModelView;
+    private TextView mTvDadesCompartides;
 
 
     @Override
@@ -18,11 +21,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mTvDadesCompartides = findViewById(R.id.Tv_DadesFragments);
+
+
         //Inicializem la variable de tipus ModelView
         mItemModelView = new ViewModelProvider(this).get(itemModelView.class);
 
         //Consultem el valor de ViewModel
-        mItemModelView.getDadesLiveData().observe(this.itemObservat -> {
+        mItemModelView.getDadesLiveData().observe(this, itemObservat -> {
             mTvDadesCompartides.setText(itemObservat);
         });
 
